@@ -11,7 +11,7 @@ class User < ApplicationRecord
   #DeviseのユーザをSNSからの情報をもとに探して返すメソッド
   def self.find_for_oauth(auth)
   # ログインする用のSNSを探す(authには、OAuth認証先のSNSからのユーザ情報が入っている。)
-  sns = Sns_credential.where(uid: auth.uid, provider: auth.provider).first
+  sns = SnsCredential.where(uid: auth.uid, provider: auth.provider).first
   # ログインする用のSNSが存在しない場合
   unless sns
     # まずはUserを作る
