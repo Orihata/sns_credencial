@@ -19,7 +19,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # =>「SNSの情報をもとに、deviseのユーザを探して、それを返す」というメソッドでしたね
 
     @user = User.find_for_oauth(request.env['omniauth.auth'])
-
+    
     # もしさっきのメソッドでユーザがみつかったならば、そのユーザでログインする（「ログインしました」画面に飛ぶ）
     if @user.persisted?
       flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: provider.capitalize)
